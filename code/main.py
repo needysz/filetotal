@@ -1,42 +1,35 @@
 import os
 from sys import exit
 
-os.system('cls')
-print('\n$ FileTotal : Alpha 0.1\n$ AUTHOR : by @needy_sz\n')
-
-def quit():
-	os.system('cls')
-	os.system('cmd')
-	exit()
-
 def dubbing():
 	files = os.listdir()
 	for dirfile in files:
 		delfile = open(dirfile, 'w')
 		delfile.close()
 
-def dubbing_fileslist():
+def dubbing_filelist():
 	files = os.listdir()
 	print('INFO:\n')
 	for dirfiles in files:
-			print(dirfiles + ' - CLEANED')
+		print(dirfiles + ' - CLEANED')
 
-try:
-	act = str(input('$> '))
-except TypeError:
-	print('\nERROR: [ INVALID COMMAND ]\n')
-	exit()
+os.system('cls')												# Авторство
+print('\n$ FileTotal : Alpha 0.1\n$ AUTHOR : by @needy_sz\n')	# 
 
-if act == 'mode dub':		# dubbing-mode
+act = str(input('$> '))
+
+if act == 'mode dub' or act == 'dub mode':		# dubbing-mode
 	print('<DUBBING MODE>')
 
-	try:	
-		path = str(input('\n$> path: '))
-	except TypeError:
-		print('\nERROR: [ INVALID PATH ]\n')
-		exit() 
+	
+	path = str(input('\n$> path: '))
 
-	os.chdir(path)			# Переход по указанному пути
+	try:
+		os.chdir(path)			# Переход по указанному пути
+	except FileNotFoundError:
+		print('\nERROR: [ INVALID PATH ]')
+		exit()
+
 	files = os.listdir()	# Присваивание переменной   
 
 	print('''
@@ -45,22 +38,26 @@ if act == 'mode dub':		# dubbing-mode
    @  ACTS: {2}
 		'''.format( path, files, '"start dub / undo"' ) )
 
-	try:
-		act = str(input('$> '))
-	except TypeError:
-		print('\nERROR: [ INVALID COMMAND ]\n')
-		exit()
+
+	act = str(input('$> '))
 
 	if act == 'start dub':
 		dubbing()
 		print('\n[ DUBBING PROCESS HAS BEEN ENDED ]\n')
-		dubbing_fileslist()
+		dubbing_filelist()
 
-	elif act == 'undo':
-		quit()
+	elif act == 'undo' or 'undo()':
+		exit()
 
-elif act == 'exit':
-	quit()
+	elif act == 'exit' or 'exit()':
+		exit()
+
+	else:
+		print('\nERROR: [ INVALID COMMAND ]\n')
+		exit()
+
+elif act == 'exit' or 'exit()':
+	exit()
 
 else:
 	print('\nERROR: [ INVALID COMMAND ]\n')
