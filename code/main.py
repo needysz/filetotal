@@ -13,7 +13,7 @@ def dubbing_filelist():
 	for dirfiles in files:
 		print(dirfiles + ' - CLEANED')
 
-os.system('cls')												# Авторство
+os.system('cls')						# Авторство
 print('\n$ FileTotal : Alpha 0.1\n$ AUTHOR : by @needy_sz\n')	# 
 
 act = str(input('$> '))
@@ -21,7 +21,6 @@ act = str(input('$> '))
 if act == 'mode dub' or act == 'dub mode':		# dubbing-mode
 	print('<DUBBING MODE>')
 
-	
 	path = str(input('\n$> path: '))
 
 	try:
@@ -37,7 +36,6 @@ if act == 'mode dub' or act == 'dub mode':		# dubbing-mode
    @ FILES: {1}
    @  ACTS: {2}
 		'''.format( path, files, '"start dub / undo"' ) )
-
 
 	act = str(input('$> '))
 
